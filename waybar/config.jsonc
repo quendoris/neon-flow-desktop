@@ -1,0 +1,158 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 42,
+  "exclusive": true,
+  "passthrough": false,
+  "spacing": 8,
+  "reload_style_on_change": true,
+
+  "modules-left": [
+    "clock"
+  ],
+
+  "modules-center": [
+    "custom/launcher-terminal",
+    "custom/launcher-files",
+    "custom/launcher-browser",
+    "custom/launcher-tor",
+    "custom/launcher-plus"
+  ],
+
+  "modules-right": [
+    "custom/rates",
+    "custom/gpu",
+    "cpu",
+    "memory",
+    "temperature",
+    "battery",
+    "network",
+    "pulseaudio",
+    "tray"
+  ],
+
+  "clock": {
+    "interval": 1,
+    "locale": "en_US.UTF-8",
+    "format": "{:%H:%M • %a, %d %b}",
+    "format-alt": "{:%A, %d.%m.%Y}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>"
+  },
+
+  "custom/launcher-terminal": {
+    "exec": "~/.config/waybar/scripts/launcher.py show terminal",
+    "exec-if": "~/.config/waybar/scripts/launcher.py visible terminal",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/launcher.py launch terminal"
+  },
+
+  "custom/launcher-files": {
+    "exec": "~/.config/waybar/scripts/launcher.py show files",
+    "exec-if": "~/.config/waybar/scripts/launcher.py visible files",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/launcher.py launch files"
+  },
+
+  "custom/launcher-browser": {
+    "exec": "~/.config/waybar/scripts/launcher.py show browser",
+    "exec-if": "~/.config/waybar/scripts/launcher.py visible browser",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/launcher.py launch browser"
+  },
+
+  "custom/launcher-tor": {
+    "exec": "~/.config/waybar/scripts/launcher.py show tor",
+    "exec-if": "~/.config/waybar/scripts/launcher.py visible tor",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/launcher.py launch tor"
+  },
+
+  "custom/launcher-plus": {
+    "exec": "~/.config/waybar/scripts/launcher.py show plus",
+    "exec-if": "~/.config/waybar/scripts/launcher.py visible plus",
+    "return-type": "json",
+    "interval": 5,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "~/.config/waybar/scripts/launcher.py launch plus"
+  },
+
+  "custom/rates": {
+    "exec": "~/.config/waybar/scripts/rates.py",
+    "return-type": "json",
+    "interval": 300,
+    "format": "{}",
+    "tooltip": true
+  },
+
+  "custom/gpu": {
+    "exec": "~/.config/waybar/scripts/gpu.py",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "tooltip": true
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "  {usage}%",
+    "tooltip": true
+  },
+
+  "memory": {
+    "interval": 3,
+    "format": "  {percentage}%",
+    "tooltip-format": "Used: {used:0.1f} GiB\nAvailable: {avail:0.1f} GiB\nTotal: {total:0.1f} GiB"
+  },
+
+  "temperature": {
+    "interval": 3,
+    "critical-threshold": 82,
+    "format": " {temperatureC}°C",
+    "tooltip": true
+  },
+
+  "battery": {
+    "interval": 15,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "󰁹 {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    "format-alt": "󰁹 {time} {capacity}%"
+  },
+
+  "network": {
+    "interval": 5,
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀  wired",
+    "format-disconnected": "󰤭  off",
+    "tooltip-format": "{ifname}\n{ipaddr}/{cidr}\n{signalStrength}%"
+  },
+
+  "pulseaudio": {
+    "format": "  {volume}%",
+    "format-muted": "󰝟  muted",
+    "scroll-step": 3,
+    "on-click": "pavucontrol"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  }
+}
